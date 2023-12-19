@@ -1,6 +1,11 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
+// den første viser hvis du trykker add på tom
+// den andre lager element og legger til i listen eller sletter
+//span er slettefunksjonen, \u00d7 er unicode for x-symbolet
+// onclick for addtask står i html dokumentet
+
 function addTask(){
     if(inputBox.value === ''){
         alert("You must write something!");
@@ -17,9 +22,10 @@ function addTask(){
     saveData();
 }
 
+// det er addeventlistener for å sjekke av og slette ting i listen
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName === "LI"){
-        e.target.classsList.toggle("checked");
+        e.target.classList.toggle("checked");
         saveData();
     }
     else if(e.target.tagName === "SPAN"){
@@ -28,6 +34,7 @@ listContainer.addEventListener("click", function(e){
     }
 }, false);
 
+// savedata funksjonen lagrer data i local storage slik at den er der når du går innpå siden igjen
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
 }
@@ -38,7 +45,9 @@ function showTask(){
 showTask();
 
 
-// Fikk feilmelding på toogle funksjonen for å bytte klasseliste mellom checked og unchecked, men span funksjonen fungerte.
-// script.js:21  Uncaught TypeError: Cannot read properties of undefined (reading 'toggle')
-//     at HTMLUListElement.<anonymous> (script.js:21:29)
-// (anonymous) @ script.js:21
+//prøvde å få til å legge til ting i li ved å trykke enter i tillegg til klikke på knapp
+//button.addEventListener("keydown", function (addTask) {
+//    console.log("button is entered!");
+//  });
+
+
