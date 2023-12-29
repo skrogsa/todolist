@@ -110,3 +110,16 @@ ul li span{
 ul li span:hover{
     background: #edeef0;
 }
+
+p {
+    text-align: center;
+    color: #fff;
+}
+
+a {
+    color:#fff;
+}
+
+a:visited {
+    color:#fff;
+}
